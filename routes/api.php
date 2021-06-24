@@ -116,7 +116,6 @@ Route::get('/biometric/get-students', [
     'uses' => 'BiometricController@getStudents'
 ]);
 
-
 Route::get('/biometric/get-staff', [
     'uses' => 'BiometricController@getStaff'
 ]);
@@ -203,4 +202,24 @@ Route::post('/hostel-attendance', [
 
 Route::post('/hostel-attendance/save-batch', [
     'uses' => 'HostelAttendanceController@saveAttendanceBatch'
+]);
+
+/**
+ * ROUTE FOR CHURCH ATTENDANCE
+ */
+Route::post('/church-attendance', [
+    'uses' => 'ChurchAttendanceController@save'
+]);
+
+Route::post('/church-attendance/save-batch', [
+    'uses' => 'ChurchAttendanceController@saveBatch'
+]);
+
+
+Route::get('/church-attendance', [
+    'uses' => 'ChurchAttendanceController@getAll'
+]);
+
+Route::get('/church-attendance/get-individual', [
+    'uses' => 'ChurchAttendanceController@getStudentStaffAttendance'
 ]);
