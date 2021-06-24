@@ -345,17 +345,10 @@ class AccountController extends Controller
         $academicYear = $currentSettings->current_acadyear;
         $students = $this->_account->_getStudents($academicYear);
 
-        if ($students->isEmpty()) {
-            $data = [
-                'success' => true,
-                'description' => []
-            ];
-        } else {
-            $data = [
-                'success' => true,
-                'description' => $students
-            ];
-        }
+        $data = [
+            'success' => true,
+            'description' => $students
+        ];
 
         return response()->json([
             'data' => $data
@@ -401,17 +394,11 @@ class AccountController extends Controller
 
         $staff = $this->_account->_getStaff();
 
-        if ($staff->isEmpty()) {
-            $data = [
-                'success' => true,
-                'description' => []
-            ];
-        } else {
-            $data = [
-                'success' => true,
-                'description' => $staff
-            ];
-        }
+        $data = [
+            'success' => true,
+            'description' => $staff
+        ];
+
 
         return response()->json([
             'data' => $data

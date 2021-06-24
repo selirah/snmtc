@@ -5,14 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\Biometric;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Models\Account;
+use App\Models\Registration;
 
 class BiometricController extends Controller
 {
     private $_biometric;
+    private $_account;
+    private $_registration;
 
-    public function __construct(Biometric $biometric)
+    public function __construct(Biometric $biometric, Account $account, Registration $registration)
     {
         $this->_biometric = $biometric;
+        $this->_account = $account;
+        $this->_registration = $registration;
     }
 
     public function save(Request $request)
@@ -196,5 +202,36 @@ class BiometricController extends Controller
         return response()->json([
             'data' => $data
         ], 201);
+    }
+
+    public function getStudents()
+    {
+        $currentSettings = $this->_registration->_currentSettings();
+        $academicYear = $currentSettings->current_acadyear;
+        $students = $this->_account->_getStudents($academicYear);
+
+        $data = [
+            'success' => true,
+            'description' => $students
+        ];
+
+        return response()->json([
+            'data' => $data
+        ], 200);
+    }
+
+    public function getStaff()
+    {
+
+        $staff = $this->_account->_getStaff();
+
+        $data = [
+            'success' => true,
+            'description' => $staff
+        ];
+
+        return response()->json([
+            'data' => $data
+        ], 200);
     }
 }

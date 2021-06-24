@@ -112,6 +112,15 @@ Route::delete('/biometric/{id}', [
     'uses' => 'BiometricController@delete'
 ]);
 
+Route::get('/biometric/get-students', [
+    'uses' => 'BiometricController@getStudents'
+]);
+
+
+Route::get('/biometric/get-staff', [
+    'uses' => 'BiometricController@getStaff'
+]);
+
 /**
  * ROUTE FOR ATTENDANCE
  */
