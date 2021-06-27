@@ -73,9 +73,7 @@ class HostelAttendanceController extends Controller
         $this->_attendance->_save($payload);
         $data = [
             'success' => true,
-            'description' => [
-                'message' => 'Attendance details saved',
-            ],
+            'description' => 'Attendance details saved'
         ];
 
         return response()->json([
