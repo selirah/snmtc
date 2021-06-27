@@ -22,6 +22,11 @@ class Biometric extends Model
         return $table;
     }
 
+    public function _checkBiometricData($idNumber, $type)
+    {
+        return $this->_connectTable()->where('id_number', '=', $idNumber)->where('type', '=', $type)->first();
+    }
+
     public function _getBiometricData($idNumber, $type)
     {
         switch ($type) {

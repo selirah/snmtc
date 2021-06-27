@@ -40,7 +40,7 @@ class BiometricController extends Controller
         }
 
         // check if biometric data exist
-        $check = $this->_biometric->_getBiometricData($idNumber, $type);
+        $check = $this->_biometric->_checkBiometricData($idNumber, $type);
 
         if ($check) {
             $data = [
@@ -99,7 +99,7 @@ class BiometricController extends Controller
             $fingerTwo = $bio[$i]['fingerprint_two'];
 
             // check if biometric data exist
-            $check = $this->_biometric->_getBiometricData($idNumber, $type);
+            $check = $this->_biometric->_checkBiometricData($idNumber, $type);
 
             if (!$check) {
                 $payload[] = [
