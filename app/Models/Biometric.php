@@ -29,8 +29,16 @@ class Biometric extends Model
                 $query = $this->_connectTable()
                     ->where('id_number', '=', $idNumber)
                     ->join('staff', $this->table . '.id_number', '=', 'staff.staff_id')
-                    ->select($this->table . '.*', 'staff.id as _id', 'staff.staff_id', 'staff.firstname', 'staff.lastname', 'staff.phone_number', 'staff.email_address',
-                        'staff.gender')
+                    ->select(
+                        $this->table . '.*',
+                        'staff.id as _id',
+                        'staff.staff_id',
+                        'staff.firstname',
+                        'staff.lastname',
+                        'staff.phone_number',
+                        'staff.email_address',
+                        'staff.gender'
+                    )
                     ->first();
                 return $query;
                 break;
@@ -38,8 +46,17 @@ class Biometric extends Model
                 $query = $this->_connectTable()
                     ->where('id_number', '=', $idNumber)
                     ->join('students', $this->table . '.id_number', '=', 'students.indexno')
-                    ->select($this->table . '.*', 'students.indexno', 'students.programmeid', 'students.surname', 'students.firstname', 'students.sex',
-                        'students.yearofadmission', 'students.class1', 'students.telephone')
+                    ->select(
+                        $this->table . '.*',
+                        'students.indexno',
+                        'students.programmeid',
+                        'students.surname',
+                        'students.firstname',
+                        'students.sex',
+                        'students.yearofadmission',
+                        'students.class1',
+                        'students.telephone'
+                    )
                     ->first();
                 return $query;
                 break;
@@ -51,19 +68,36 @@ class Biometric extends Model
         switch ($type) {
             case 'staff':
                 $query = $this->_connectTable()
-                    ->where('type', '=', 1)
+                    ->where('type', '=', 2)
                     ->join('staff', $this->table . '.id_number', '=', 'staff.staff_id')
-                    ->select($this->table . '.*', 'staff.id as _id', 'staff.staff_id', 'staff.firstname', 'staff.lastname', 'staff.phone_number', 'staff.email_address',
-                        'staff.gender')
+                    ->select(
+                        $this->table . '.*',
+                        'staff.id as _id',
+                        'staff.staff_id',
+                        'staff.firstname',
+                        'staff.lastname',
+                        'staff.phone_number',
+                        'staff.email_address',
+                        'staff.gender'
+                    )
                     ->get();
                 return $query;
                 break;
             case 'students':
                 $query = $this->_connectTable()
-                    ->where('type', '=', 2)
+                    ->where('type', '=', 1)
                     ->join('students', $this->table . '.id_number', '=', 'students.indexno')
-                    ->select($this->table . '.*', 'students.indexno', 'students.programmeid', 'students.surname', 'students.firstname', 'students.sex',
-                        'students.yearofadmission', 'students.class1', 'students.telephone')
+                    ->select(
+                        $this->table . '.*',
+                        'students.indexno',
+                        'students.programmeid',
+                        'students.surname',
+                        'students.firstname',
+                        'students.sex',
+                        'students.yearofadmission',
+                        'students.class1',
+                        'students.telephone'
+                    )
                     ->get();
                 return $query;
                 break;
