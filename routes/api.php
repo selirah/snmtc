@@ -208,16 +208,16 @@ Route::post('/hostel-attendance/save-batch', [
  * ROUTE FOR CHURCH ATTENDANCE
  */
 Route::post('/church-attendance', [
-    'uses' => 'ChurchAttendanceController@save'
+    'uses' => 'ChurchAttendanceController@saveAttendance'
 ]);
 
 Route::post('/church-attendance/save-batch', [
-    'uses' => 'ChurchAttendanceController@saveBatch'
+    'uses' => 'ChurchAttendanceController@saveAttendanceBatch'
 ]);
 
 
 Route::get('/church-attendance', [
-    'uses' => 'ChurchAttendanceController@getAll'
+    'uses' => 'ChurchAttendanceController@getAttendanceList'
 ]);
 
 Route::get('/church-attendance/get-individual', [
