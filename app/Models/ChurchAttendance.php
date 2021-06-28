@@ -75,7 +75,7 @@ class ChurchAttendance extends Model
         switch ($type) {
             case 'staff':
                 $query = $this->_connectTable()
-                    ->where('type', '=', 1)
+                    ->where('type', '=', 2)
                     ->where('attendance_date', '=', $date)
                     ->join('staff', $this->table . '.id_number', '=', 'staff.staff_id')
                     ->select(
@@ -92,7 +92,7 @@ class ChurchAttendance extends Model
                 break;
             case 'students':
                 $query = $this->_connectTable()
-                    ->where('type', '=', 2)
+                    ->where('type', '=', 1)
                     ->where('attendance_date', '=', $date)
                     ->join('students', $this->table . '.id_number', '=', 'students.indexno')
                     ->select(
